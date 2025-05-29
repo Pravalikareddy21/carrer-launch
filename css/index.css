@@ -1,0 +1,349 @@
+body {
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #0c0c0c, #1a1a2e, #16213e);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .logo-container {
+            background: radial-gradient(circle at center, rgba(255,255,255,0.95), rgba(248,250,252,0.9));
+            padding: 60px;
+            border-radius: 30px;
+            box-shadow: 
+                0 50px 100px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.6);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg,
+                transparent,
+                rgba(99, 102, 241, 0.1),
+                rgba(168, 85, 247, 0.1),
+                rgba(236, 72, 153, 0.1),
+                transparent
+            );
+            animation: aurora 15s linear infinite;
+        }
+
+        @keyframes aurora {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .ultimate-logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Outer Energy Ring */
+        .energy-ring {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 3px solid transparent;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #6366f1, #a855f7, #ec4899, #f59e0b) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: exclude;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            animation: energyPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes energyPulse {
+            0%, 100% { 
+                transform: rotate(0deg) scale(1);
+                filter: brightness(1) drop-shadow(0 0 20px rgba(99, 102, 241, 0.5));
+            }
+            25% { 
+                transform: rotate(90deg) scale(1.05);
+                filter: brightness(1.2) drop-shadow(0 0 30px rgba(168, 85, 247, 0.7));
+            }
+            50% { 
+                transform: rotate(180deg) scale(1.1);
+                filter: brightness(1.4) drop-shadow(0 0 40px rgba(236, 72, 153, 0.9));
+            }
+            75% { 
+                transform: rotate(270deg) scale(1.05);
+                filter: brightness(1.2) drop-shadow(0 0 30px rgba(245, 158, 11, 0.7));
+            }
+        }
+
+        /* Central Sphere */
+        .central-sphere {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(
+                circle at 30% 30%,
+                #ffffff,
+                #f8fafc,
+                #e2e8f0,
+                #cbd5e1
+            );
+            border-radius: 50%;
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.15),
+                inset 0 10px 20px rgba(255,255,255,0.8),
+                inset 0 -10px 20px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: sphereFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes sphereFloat {
+            0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
+            50% { transform: translate(-50%, -50%) translateY(-8px); }
+        }
+
+        /* Career Symbol */
+        .career-symbol {
+            font-size: 4rem;
+            background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: symbolGlow 3s ease-in-out infinite;
+            filter: drop-shadow(0 4px 8px rgba(99, 102, 241, 0.3));
+        }
+
+        @keyframes symbolGlow {
+            0%, 100% { 
+                transform: scale(1);
+                filter: drop-shadow(0 4px 8px rgba(99, 102, 241, 0.3));
+            }
+            50% { 
+                transform: scale(1.1);
+                filter: drop-shadow(0 8px 16px rgba(168, 85, 247, 0.5));
+            }
+        }
+
+        /* Floating Particles */
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, #6366f1, transparent);
+            border-radius: 50%;
+            animation: particleFloat 8s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) {
+            top: 20%;
+            left: 15%;
+            animation-delay: 0s;
+            background: radial-gradient(circle, #a855f7, transparent);
+        }
+
+        .particle:nth-child(2) {
+            top: 30%;
+            right: 20%;
+            animation-delay: 2s;
+            background: radial-gradient(circle, #ec4899, transparent);
+        }
+
+        .particle:nth-child(3) {
+            bottom: 25%;
+            left: 25%;
+            animation-delay: 4s;
+            background: radial-gradient(circle, #f59e0b, transparent);
+        }
+
+        .particle:nth-child(4) {
+            bottom: 35%;
+            right: 15%;
+            animation-delay: 6s;
+            background: radial-gradient(circle, #10b981, transparent);
+        }
+
+        @keyframes particleFloat {
+            0%, 100% { 
+                transform: translateY(0px) scale(0.8);
+                opacity: 0.4;
+            }
+            25% { 
+                transform: translateY(-15px) scale(1);
+                opacity: 0.8;
+            }
+            50% { 
+                transform: translateY(-25px) scale(1.2);
+                opacity: 1;
+            }
+            75% { 
+                transform: translateY(-15px) scale(1);
+                opacity: 0.8;
+            }
+        }
+
+        /* Orbiting Elements */
+        .orbit-container {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: orbitRotate 12s linear infinite;
+        }
+
+        .orbit-element {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .orbit-element:nth-child(1) {
+            background: linear-gradient(45deg, #6366f1, #8b5cf6);
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.6);
+        }
+
+        .orbit-element:nth-child(2) {
+            background: linear-gradient(45deg, #ec4899, #f97316);
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.6);
+            transform: translateX(-50%) rotate(120deg) translateX(90px) rotate(-120deg);
+        }
+
+        .orbit-element:nth-child(3) {
+            background: linear-gradient(45deg, #10b981, #06b6d4);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.6);
+            transform: translateX(-50%) rotate(240deg) translateX(90px) rotate(-240deg);
+        }
+
+        @keyframes orbitRotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .logo-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e293b, #475569, #64748b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 10;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .logo-subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
+            position: relative;
+            z-index: 10;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        /* Loading Progress Bar */
+        .loading-progress {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 2px;
+            overflow: hidden;
+            z-index: 20;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899, #f59e0b);
+            border-radius: 2px;
+            animation: loadProgress 5s linear forwards;
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+        }
+
+        @keyframes loadProgress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        .loading-text {
+            position: fixed;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            z-index: 20;
+            animation: loadingPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes loadingPulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* Fade Out Animation */
+        .fade-out {
+            animation: fadeOut 2s ease-in-out forwards;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.9); }
+        }
+
+        @media (max-width: 768px) {
+            .logo-container {
+                padding: 40px 30px;
+                margin: 20px;
+            }
+            
+            .ultimate-logo {
+                width: 160px;
+                height: 160px;
+            }
+            
+            .energy-ring {
+                width: 160px;
+                height: 160px;
+            }
+            
+            .central-sphere {
+                width: 110px;
+                height: 110px;
+            }
+            
+            .career-symbol {
+                font-size: 3rem;
+            }
+            
+            .logo-title {
+                font-size: 2rem;
+            }
+        }

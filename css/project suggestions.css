@@ -1,0 +1,51 @@
+body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #605a77;
+    }
+
+    .container {
+      max-width: 900px;
+      background: #968383c5;
+      padding: 30px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    select {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin-bottom: 25px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    h2, h3 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .project-title {
+      margin: 10px 0;
+      font-weight: bold;
+      color: #007BFF;
+      cursor: pointer;
+    }
+
+    .project-title:hover {
+      text-decoration: underline;
+    }
+
+    .steps {
+      display: none;
+      margin: 10px 0 20px 20px;
+      padding-left: 20px;
+    }
+
+    .steps li {
+      list-style-type: circle;
+      margin-bottom: 8px;
+      color: #444;
+    }

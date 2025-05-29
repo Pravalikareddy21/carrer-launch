@@ -1,0 +1,158 @@
+/* Reset & base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #b6e3e9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Container */
+.form-container {
+  background: #d0c8db;
+  padding: 40px 35px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #555;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+input:focus {
+  border-color: #7d7d7d;
+  outline: none;
+}
+
+/* Forgot */
+.forgot {
+  text-align: right;
+  margin-top: 5px;
+}
+
+.forgot a {
+  font-size: 13px;
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.forgot a:hover {
+  text-decoration: underline;
+}
+
+/* Submit Button */
+.sign {
+  background-color: #333;
+  color: white;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.sign:hover {
+  background-color: #555;
+}
+
+/* Social Section */
+.social-message {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 25px 0 15px;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.message {
+  margin: 0 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.icon {
+  background-color: #f2f2f2;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.icon:hover {
+  background-color: #e0e0e0;
+}
+
+.icon img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Signup */
+.signup {
+  text-align: center;
+  font-size: 14px;
+  color: #444;
+}
+
+.signup a {
+  font-weight: bold;
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.signup a:hover {
+  text-decoration: underline;
+}
