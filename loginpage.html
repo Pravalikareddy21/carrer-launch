@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Career Coach</title>
+  <link rel="stylesheet" href="css/loginpage.css" />
+</head>
+<body>
+  <div class="form-container">
+    <p class="title">Login</p>
+    <form class="form" onsubmit="handleLogin(event)">
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" placeholder="Enter username" required />
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="Enter password" required />
+        <div class="forgot">
+          <a rel="noopener noreferrer" href="#">Forgot Password?</a>
+        </div>
+      </div>
+      <button type="submit" class="sign">Sign in</button>
+    </form>
+
+    <div class="social-message">
+      <div class="line"></div>
+      <p class="message">Login with social accounts</p>
+      <div class="line"></div>
+    </div>
+
+    <div class="social-icons">
+      <button aria-label="Log in with Google" class="icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google" width="24" height="24" />
+      </button>
+      <button aria-label="Log in with Twitter" class="icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" width="24" height="24" />
+      </button>
+      <button aria-label="Log in with GitHub" class="icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" width="24" height="24" />
+      </button>
+    </div>
+
+    <p class="signup">Don't have an account?
+      <a rel="noopener noreferrer" href="signup.html">Sign up</a>
+    </p>
+  </div>
+
+  <script>
+    function handleLogin(event) {
+      event.preventDefault();
+      // Example simple check or logic before redirect
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      if (username && password) {
+        // Redirect to homepage after successful "login"
+        window.location.href = "homepage.html"; // Change to your actual homepage
+      } else {
+        alert("Please fill in both fields.");
+      }
+    }
+  </script>
+</body>
+</html>

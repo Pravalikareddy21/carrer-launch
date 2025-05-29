@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internship Listings</title>
+  <link rel="stylesheet" href="css/internship.css" />
+</head>
+<body>
+  <div class="page-container">
+    <h1>Find Your Perfect Internship</h1>
+    <p class="subtitle">Discover opportunities at top companies and launch your career</p>
+
+    <div class="search-container">
+      <h2>🔍 Search Internships</h2>
+      <div class="search-fields">
+        <input type="text" id="title" placeholder="e.g., Software Engineer, Google" />
+        <input type="text" id="location" placeholder="e.g., San Francisco, Remote" />
+        <select id="field">
+          <option value="">All Fields</option>
+          <option value="Tech">Tech</option>
+          <option value="AI/ML">AI/ML</option>
+          <option value="Data">Data</option>
+          <option value="Design">Design</option>
+        </select>
+        <select id="duration">
+          <option value="">Any Duration</option>
+          <option value="8 weeks">8 weeks</option>
+          <option value="10 weeks">10 weeks</option>
+          <option value="12 weeks">12 weeks</option>
+          <option value="16 weeks">16 weeks</option>
+        </select>
+      </div>
+      <button onclick="filterInternships()">🔍 Search Internships</button>
+    </div>
+
+    <h3 id="results-count"></h3>
+    <div id="internships" class="internship-list"></div>
+  </div>
+
+  <script>
+    const internships = [
+      { title: "Software Engineering Intern", company: "Google", tags: ["Remote", "Tech", "AI/ML", "Full-time"], location: "Mountain View, CA", stipend: "$8,000/month", duration: "12 weeks", due: "2024-03-15" },
+      { title: "Data Science Intern", company: "Netflix", tags: ["Hybrid", "Data", "Analytics", "Entertainment"], location: "Los Gatos, CA", stipend: "$7,500/month", duration: "16 weeks", due: "2024-02-28" },
+      { title: "AI Intern", company: "OpenAI", tags: ["AI", "Research", "Remote"], location: "Remote", stipend: "$10,000/month", duration: "12 weeks", due: "2024-07-01" },
+      { title: "Frontend Developer Intern", company: "Meta", tags: ["Web", "UI/UX", "React"], location: "Menlo Park, CA", stipend: "$7,000/month", duration: "10 weeks", due: "2024-06-12" },
+      { title: "Cloud Engineering Intern", company: "AWS", tags: ["Cloud", "DevOps", "Infrastructure"], location: "Seattle, WA", stipend: "$8,500/month", duration: "12 weeks", due: "2024-06-25" },
+      { title: "UX Designer Intern", company: "Adobe", tags: ["Design", "Prototyping", "Figma"], location: "San Jose, CA", stipend: "$6,000/month", duration: "8 weeks", due: "2024-06-18" },
+      { title: "Cybersecurity Intern", company: "Cisco", tags: ["Security", "Network", "Tech"], location: "Bangalore, India", stipend: "₹40,000/month", duration: "12 weeks", due: "2024-06-10" },
+      { title: "Business Analyst Intern", company: "Deloitte", tags: ["Business", "Data", "Finance"], location: "New York, NY", stipend: "$6,500/month", duration: "10 weeks", due: "2024-07-05" },
+      { title: "Robotics Intern", company: "Boston Dynamics", tags: ["Robotics", "AI", "Mechanical"], location: "Boston, MA", stipend: "$8,200/month", duration: "12 weeks", due: "2024-06-30" },
+      { title: "Marketing Intern", company: "Spotify", tags: ["Media", "Digital Marketing", "Remote"], location: "Remote", stipend: "$5,000/month", duration: "8 weeks", due: "2024-06-22" },
+      { title: "Flutter Developer Intern", company: "Swiggy", tags: ["Flutter", "Mobile", "UI"], location: "Hyderabad, India", stipend: "₹30,000/month", duration: "12 weeks", due: "2024-06-20" },
+      { title: "Supply Chain Intern", company: "Flipkart", tags: ["Business", "Supply Chain", "On-site"], location: "Bangalore, India", stipend: "₹20,000/month", duration: "10 weeks", due: "2024-06-18" },
+      { title: "Machine Learning Intern", company: "NVIDIA", tags: ["AI", "Remote", "Deep Learning"], location: "Remote", stipend: "$9,500/month", duration: "12 weeks", due: "2024-06-10" },
+      { title: "Finance Intern", company: "Goldman Sachs", tags: ["Finance", "Business", "NYC"], location: "New York, NY", stipend: "$7,800/month", duration: "10 weeks", due: "2024-06-01" },
+      { title: "Bioinformatics Intern", company: "Illumina", tags: ["Biotech", "Genomics", "Research"], location: "San Diego, CA", stipend: "$6,500/month", duration: "12 weeks", due: "2024-06-22" },
+      { title: "Product Strategy Intern", company: "LinkedIn", tags: ["Product", "Remote", "MBA"], location: "Remote", stipend: "$8,000/month", duration: "10 weeks", due: "2024-06-10" },
+      { title: "Innovation Intern", company: "Samsung R&D", tags: ["Research", "Innovation", "Electronics"], location: "Seoul, South Korea", stipend: "$5,500/month", duration: "12 weeks", due: "2024-07-01" },
+      { title: "Game Design Intern", company: "Ubisoft", tags: ["Gaming", "Unity", "Design"], location: "Montreal, Canada", stipend: "$6,200/month", duration: "12 weeks", due: "2024-06-25" },
+      { title: "Blockchain Developer Intern", company: "Polygon", tags: ["Blockchain", "Web3", "Remote"], location: "Remote", stipend: "$8,000/month", duration: "12 weeks", due: "2024-07-10" },
+      { title: "Environmental Analyst Intern", company: "UNEP", tags: ["Environment", "Data", "Policy"], location: "Geneva, Switzerland", stipend: "$5,800/month", duration: "12 weeks", due: "2024-07-20" },
+      { title: "Backend Developer Intern", company: "Atlassian", tags: ["Backend", "API", "Remote"], location: "Remote", stipend: "$7,500/month", duration: "12 weeks", due: "2024-07-05" },
+      { title: "Mobile App Intern", company: "Paytm", tags: ["Android", "Kotlin", "India"], location: "Noida, India", stipend: "₹35,000/month", duration: "10 weeks", due: "2024-07-12" }
+    ];
+
+    function renderInternships(list) {
+      const container = document.getElementById("internships");
+      container.innerHTML = "";
+      document.getElementById("results-count").innerText = `${list.length} Internships Found`;
+      list.forEach(intn => {
+        const card = document.createElement("div");
+        card.className = "internship-card";
+        card.innerHTML = `
+          <h4>🔍 ${intn.title}</h4>
+          <p><strong>${intn.company}</strong></p>
+          <div class="tags">
+            ${intn.tags.map(tag => `<span class="tag">${tag}</span>`).join(' ')}
+          </div>
+          <p>📍 ${intn.location}</p>
+          <p>💰 ${intn.stipend}</p>
+          <p>⏱ ${intn.duration}</p>
+          <p>📅 Due ${intn.due}</p>
+          <button class="apply-btn">Apply Now</button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function filterInternships() {
+      const title = document.getElementById("title").value.toLowerCase();
+      const location = document.getElementById("location").value.toLowerCase();
+      const field = document.getElementById("field").value.toLowerCase();
+      const duration = document.getElementById("duration").value.toLowerCase();
+
+      const filtered = internships.filter(intn => {
+        return (
+          (!title || intn.title.toLowerCase().includes(title)) &&
+          (!location || intn.location.toLowerCase().includes(location)) &&
+          (!field || intn.tags.join(" ").toLowerCase().includes(field)) &&
+          (!duration || intn.duration.toLowerCase().includes(duration))
+        );
+      });
+
+      renderInternships(filtered);
+    }
+
+    window.onload = () => renderInternships(internships);
+  </script>
+</body>
+</html>

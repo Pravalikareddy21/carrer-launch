@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Coach</title>
+    <link rel="stylesheet" href="css/project suggestions.css">
+</head>
+<body>
+
+  <div class="container">
+    <h2>Select a Role</h2>
+
+    <select id="roleSelect" onchange="populateProjects()">
+      <option value="">-- Choose a Role --</option>
+      <option value="frontend">Frontend Developer</option>
+      <option value="backend">Backend Developer</option>
+      <option value="datasci">Data Scientist</option>
+      <option value="uiux">UI/UX Designer</option>
+      <option value="fullstack">Full Stack Developer</option>
+    </select>
+
+    <div id="projectList"></div>
+  </div>
+
+  <script>
+    const createSteps = (project) => [
+      `Plan the ${project}`,
+      `Design the interface or structure`,
+      `Write the code and test`,
+      `Deploy and document`
+    ];
+
+    const fillProjects = (names) => {
+      const obj = {};
+      names.forEach(name => obj[name] = createSteps(name));
+      return obj;
+    };
+
+    const projects = {
+      frontend: fillProjects([
+        "Portfolio Website", "Weather App", "Quiz App", "Blog Template", "Image Slider",
+        "Product Landing Page", "Countdown Timer", "To-do List App", "Form Validation UI", "Login Page",
+        "Responsive Navbar", "Dark/Light Mode Toggle", "CSS Animation Showcase", "Search Filter UI", "Recipe Finder UI",
+        "Price Comparison Table", "Contact Form UI", "Mobile App Mockup", "News Grid Layout", "Testimonial Slider"
+      ]),
+      backend: fillProjects([
+        "Authentication API", "Blog Post API", "Task Manager", "User Registration System", "JWT Auth Server",
+        "CRUD with MongoDB", "Payment Integration", "Logging Middleware", "Rate Limiter Service", "Event Logger API",
+        "Order Tracking API", "Chat Message Storage", "Notification System", "REST API for Products", "Job Application Tracker",
+        "Student DB API", "Event Booking API", "Newsletter Signup API", "Inventory System", "E-commerce Backend"
+      ]),
+      datasci: fillProjects([
+        "Netflix Dataset Analysis", "Titanic Prediction", "Sales Forecasting", "House Price Prediction", "Customer Churn Analysis",
+        "Heart Disease Classifier", "Loan Approval Predictor", "Fake News Detector", "Spam Classifier", "Stock Price Visualizer",
+        "Sentiment Analyzer", "Emotion Detection from Text", "Movie Recommender", "Resume Parser", "Face Recognition System",
+        "Gender Prediction Model", "Credit Card Fraud Detection", "Social Media Analytics", "E-commerce Product Trends", "Traffic Volume Prediction"
+      ]),
+      uiux: fillProjects([
+        "Login Page UI", "Signup Flow", "Finance Tracker UI", "Restaurant App UI", "Portfolio Figma UI",
+        "News App Layout", "E-learning Dashboard", "Dark Theme Design", "Mobile App Design", "Crypto Wallet UI",
+        "Fitness App Wireframe", "Flight Booking UI", "Car Rental App", "UX Case Study", "Social Media Feed UI",
+        "Food Delivery UI", "Shopping Cart Mockup", "Live Chat Interface", "Podcast App UI", "Blog Reader UI"
+      ]),
+      fullstack: fillProjects([
+        "Fullstack E-commerce Site", "MERN Stack Blog", "Chat App with Socket.io", "Social Network Clone", "Online Learning Platform",
+        "Portfolio Builder Tool", "Job Board App", "Resume Analyzer App", "Recipe Sharing Site", "Forum Web App",
+        "Booking Management", "Event Scheduler", "Online Poll System", "Fitness Dashboard", "Q&A Site like Quora",
+        "File Upload Manager", "Admin Panel Generator", "Feedback Collector App", "Video Streaming App", "Startup Landing Site"
+      ])
+    };
+
+    function populateProjects() {
+      const role = document.getElementById("roleSelect").value;
+      const container = document.getElementById("projectList");
+      container.innerHTML = "";
+
+      if (projects[role]) {
+        for (const project in projects[role]) {
+          const steps = projects[role][project];
+          const id = project.replace(/\s+/g, "_");
+
+          const title = document.createElement("div");
+          title.className = "project-title";
+          title.textContent = "\ud83d\udccc " + project;
+          title.setAttribute("onclick", `toggleSteps('${id}')`);
+
+          const stepsList = document.createElement("ul");
+          stepsList.className = "steps";
+          stepsList.id = id;
+
+          steps.forEach(step => {
+            const li = document.createElement("li");
+            li.textContent = step;
+            stepsList.appendChild(li);
+          });
+
+          container.appendChild(title);
+          container.appendChild(stepsList);
+        }
+      }
+    }
+
+    function toggleSteps(id) {
+      const list = document.getElementById(id);
+      list.style.display = list.style.display === "none" ? "block" : "none";
+    }
+  </script>
+</body>
+</html>

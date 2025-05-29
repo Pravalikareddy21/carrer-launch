@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Career Launch Logo</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div class="logo-container">
+        <div class="ultimate-logo">
+            <!-- Energy Ring -->
+            <div class="energy-ring"></div>
+            
+            <!-- Orbiting Elements -->
+            <div class="orbit-container">
+                <div class="orbit-element"></div>
+                <div class="orbit-element"></div>
+                <div class="orbit-element"></div>
+            </div>
+            
+            <!-- Central Sphere with Career Symbol -->
+            <div class="central-sphere">
+                <div class="career-symbol">🚀</div>
+            </div>
+            
+            <!-- Floating Particles -->
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
+        <h1 class="logo-title">Career Launch</h1>
+        <p class="logo-subtitle">Elevate Your Professional Journey</p>
+    </div>
+    
+    <!-- Loading Progress -->
+    <div class="loading-progress">
+        <div class="progress-bar"></div>
+    </div>
+    <div class="loading-text">Preparing your career transformation...</div>
+
+    <script>
+        // Redirect to signup page after 5 seconds
+        setTimeout(function() {
+            // Add fade out effect
+            document.body.classList.add('fade-out');
+            
+            // Redirect after fade animation completes
+            setTimeout(function() {
+                // Replace 'signup.html' with your actual signup page URL
+                window.location.href = 'loginpage.html';
+            }, 2000);
+        }, 5000); // 5000 milliseconds = 5 seconds
+
+        // Optional: Add click to skip functionality
+        document.addEventListener('click', function() {
+            document.body.classList.add('fade-out');
+            setTimeout(function() {
+                window.location.href = 'loginpage.html';
+            }, 1000);
+        });
+
+        // Update loading text dynamically (faster cycling for 5-second timer)
+        const loadingTexts = [
+            "Preparing your career transformation...",
+            "Analyzing market opportunities...",
+            "Crafting your success pathway...",
+            "Unlocking your potential...",
+            "Building your professional future..."
+        ];
+
+        let textIndex = 0;
+        const loadingTextElement = document.querySelector('.loading-text');
+
+        setInterval(function() {
+            textIndex = (textIndex + 1) % loadingTexts.length;
+            loadingTextElement.textContent = loadingTexts[textIndex];
+        }, 1000); // Change text every 1 second for the 5-second timer
+    </script>
+</body>
+</html>
